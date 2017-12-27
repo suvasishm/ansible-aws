@@ -1,0 +1,15 @@
+#bash
+#$ export AWS_ACCESS_KEY_ID='YOUR_AWS_API_KEY'
+#$ export AWS_SECRET_ACCESS_KEY='YOUR_AWS_API_SECRET_KEY'
+
+- name: Terminate EC2 instances
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Terminate instances that were previously launched
+      ec2:
+        # update the following key values as per your own AWS configuration
+        instance_ids: i-0195c72bdcd87bca1
+        region: us-east-2
+        state: absent
+        instance_initiated_shutdown_behavior: terminate

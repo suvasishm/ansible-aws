@@ -1,0 +1,20 @@
+#bash
+#$ export AWS_ACCESS_KEY_ID='YOUR_AWS_API_KEY'
+#$ export AWS_SECRET_ACCESS_KEY='YOUR_AWS_API_SECRET_KEY'
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: Provision an EC2 instance
+      ec2:
+         # update the following key values as per your own AWS configuration
+         key_name: Ohio_EC2_Key_Pair_2 
+         instance_type: t2.micro
+         region: us-east-2
+         group: default
+         image: ami-dc6843b9
+         wait: true
+      register: ec2
