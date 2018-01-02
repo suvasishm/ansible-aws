@@ -1,0 +1,25 @@
+#bash
+#$ export AWS_ACCESS_KEY_ID='YOUR_AWS_API_KEY'
+#$ export AWS_SECRET_ACCESS_KEY='YOUR_AWS_API_SECRET_KEY'
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  become: yes
+  tasks:
+    - name: Remove apache2
+      apt:
+        name: apache2
+        state: absent
+        purge: yes
+
+    - name: Remove mysql
+      apt:
+        state: absent
+        purge: yes
+
+    - name: Remove php5
+      apt:
+        name: php5
+        state: absent
+        purge: yes

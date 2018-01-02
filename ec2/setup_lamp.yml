@@ -5,23 +5,12 @@
 - hosts: localhost
   connection: local
   gather_facts: False
-
+  become: yes
   tasks:
-
-    - name: Provision an EC2 instance
-      ec2:
-         # update the following key values as per your own AWS configuration
-         key_name: Ohio_EC2_Key_Pair_2 
-         instance_type: t2.micro
-         region: us-east-2
-         group: default
-         image: ami-dc6843b9
-         wait: true
-      register: ec2
-
     - name: Install apache2
       apt:
         name: apache2
+        update_cache: yes
         state: latest
 
     - name: Install mysql
@@ -29,7 +18,7 @@
         name: mysql-server
         state: latest
 
-    - name: Install php5
+    - name: Install php7
       apt:
-        name: php5
+        name: php7
         state: latest

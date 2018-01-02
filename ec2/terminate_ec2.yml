@@ -9,7 +9,7 @@
     - name: Terminate instances that were previously launched
       ec2:
         # update the following key values as per your own AWS configuration
-        instance_ids: i-0195c72bdcd87bca1
+        instance_ids: i-0304baf16589cad68
         region: us-east-2
         state: absent
         instance_initiated_shutdown_behavior: terminate
